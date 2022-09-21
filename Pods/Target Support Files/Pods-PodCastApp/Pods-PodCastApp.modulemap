@@ -1,0 +1,6 @@
+framework module Pods_PodCastApp {
+  umbrella header "Pods-PodCastApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
