@@ -9,7 +9,14 @@ import Foundation
 import Alamofire
 import FeedKit
 
+extension Notification.Name {
+    static let downloadEpisodePogress = NSNotification.Name("downloadEpisodePogress")
+    static let downloadEpisodeCompleted = NSNotification.Name("downloadEpisodeCompleted")
+}
+
 class APIService {
+    
+    typealias EpisodeDownloadCompletedTuple = (fileUrl:String,title:String)
     
     static let shared = APIService()
     
@@ -74,6 +81,32 @@ class APIService {
         
         
         
+    }
+    
+    
+    func downloadEpisode(episode:Episode) {
+        let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        AF.download(episode.streamUrl,to: downloadRequest).downloadProgress { progress in
+            NotificationCenter.default.post(name:.downloadEpisodePogress,object:nil ,userInfo:["title":episode.title ?? "","progress":progress.fractionCompleted])
+        }.response { response in
+//
+            let episodeDownloadCompleted = EpisodeDownloadCompletedTuple(fileUrl:response.fileURL?.absoluteString ?? "",title:episode.title ?? "")
+            NotificationCenter.default.post(name: .downloadEpisodeCompleted, object: episodeDownloadCompleted)
+            
+            var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+            guard var index = downloadedEpisodes.firstIndex(where: {$0.title == episode.title && $0.author == episode.author }) else { return }
+            
+            downloadedEpisodes[index].fileUrl = response.fileURL?.absoluteString ?? ""
+            
+            do{
+                let data =  try JSONEncoder().encode(downloadedEpisodes)
+                UserDefaults.standard.set(data, forKey: UserDefaults.downloadedKey)
+            }catch let error {
+                print("let data =  try JSONEncoder().encode(downloadedEpisodes) error")
+            }
+            
+        }
+
     }
     
 }

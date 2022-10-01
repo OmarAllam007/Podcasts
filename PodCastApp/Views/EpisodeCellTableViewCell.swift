@@ -24,6 +24,7 @@ class EpisodeCellTableViewCell: UITableViewCell {
     }
     
     
+    @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var episodeImageView: UIImageView!
     
     @IBOutlet weak var episodeDateLabel: UILabel!

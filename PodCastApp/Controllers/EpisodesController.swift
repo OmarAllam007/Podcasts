@@ -21,6 +21,61 @@ class EpisodesController:UITableViewController {
         }
     }
     
+    fileprivate func setupNavigationBarButtons(){
+        let savedPodcasts = UserDefaults.standard.savedPodcasts()
+        
+        let isFavourite = savedPodcasts.firstIndex(where: {$0.trackName == self.podcast?.trackName &&
+            $0.artistName == self.podcast?.artistName}) != nil
+        
+        if isFavourite {
+            
+            navigationItem.rightBarButtonItems = [
+                .init(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+                    
+            ]
+        }else{
+            navigationItem.rightBarButtonItems = [
+                    .init(title: "Favourite", style: .plain, target: self, action: #selector(handleSaveFavourite)),
+            ]
+        }
+        
+        
+    }
+    
+    @objc fileprivate func handleFetchSavedFavourite(){
+        guard let data = UserDefaults.standard.data(forKey: UserDefaults.favouriteKey) else { return }
+        let podcasts = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Podcast]
+        
+        podcasts?.forEach({ p in
+            print(p.trackName ?? "")
+        })
+        
+    }
+    
+    
+    
+    
+    @objc fileprivate func handleSaveFavourite(){
+        guard let podcast = self.podcast else { return }
+        
+        var listOfSavedPodcasts = UserDefaults.standard.savedPodcasts()
+        listOfSavedPodcasts.append(podcast)
+        
+        let data =  NSKeyedArchiver.archivedData(withRootObject: listOfSavedPodcasts)
+        
+        UserDefaults.standard.set(data, forKey: UserDefaults.favouriteKey)
+        
+        
+        showBadgeAnimation()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+        
+        
+    }
+    
+    fileprivate func showBadgeAnimation(){
+        UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = "New"
+    }
     
     fileprivate func fetchEpisodes(){
         episodes = []
@@ -39,6 +94,7 @@ class EpisodesController:UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupNavigationBarButtons()
     }
     
     
@@ -61,7 +117,7 @@ class EpisodesController:UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID,for: indexPath) as! EpisodeCellTableViewCell
         
-        cell.episode  =   episodes[indexPath.row]
+        cell.episode =  episodes[indexPath.row]
         
         
         return cell
@@ -74,8 +130,7 @@ class EpisodesController:UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainTabbarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-        mainTabbarController?.maximizePlayerDetails(episode: episodes[indexPath.row])
-        
+        mainTabbarController?.maximizePlayerDetails(episode: episodes[indexPath.row],playlistEpisodes:self.episodes)
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -87,6 +142,27 @@ class EpisodesController:UITableViewController {
         activityIndicator.color = .darkGray
         activityIndicator.startAnimating()
         return activityIndicator
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let contextItem = UIContextualAction(style: .normal, title: "Download") {  (contextualAction, view, boolValue) in
+            
+            let episode = self.episodes[indexPath.row]
+            UserDefaults.standard.downloadEpisode(episode: episode)
+            
+            APIService.shared.downloadEpisode(episode: episode)
+            boolValue(true)
+        }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        contextItem.backgroundColor = .darkGray
+        
+
+        swipeActions.performsFirstActionWithFullSwipe = false
+        
+        return swipeActions
     }
 }
 

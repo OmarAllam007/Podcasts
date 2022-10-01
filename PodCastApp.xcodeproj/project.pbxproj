@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950AFDCB28E1B86F00C865DC /* FavouriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AFDCA28E1B86E00C865DC /* FavouriteController.swift */; };
+		950AFDCD28E1BF2400C865DC /* FavouritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AFDCC28E1BF2400C865DC /* FavouritePodcastCell.swift */; };
+		950AFDCF28E314AB00C865DC /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AFDCE28E314AB00C865DC /* UserDefault.swift */; };
+		950AFDD128E4783E00C865DC /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950AFDD028E4783E00C865DC /* DownloadsController.swift */; };
 		9550055A28CE05F7003F0899 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550055928CE05F7003F0899 /* String.swift */; };
 		9550055C28D1AC70003F0899 /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9550055B28D1AC70003F0899 /* RSSFeed.swift */; };
 		9550055E28D1B6DF003F0899 /* PlayerDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9550055D28D1B6DF003F0899 /* PlayerDetails.xib */; };
@@ -38,6 +42,10 @@
 		5E5C9782D1A6B2EA5E53B865 /* Pods-PodCastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodCastApp.release.xcconfig"; path = "Target Support Files/Pods-PodCastApp/Pods-PodCastApp.release.xcconfig"; sourceTree = "<group>"; };
 		69F51B9EFB3942FF8A1764EF /* Pods_PodCastApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PodCastApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E1F576A2BEFAE8055721A3A /* Pods-PodCastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodCastApp.debug.xcconfig"; path = "Target Support Files/Pods-PodCastApp/Pods-PodCastApp.debug.xcconfig"; sourceTree = "<group>"; };
+		950AFDCA28E1B86E00C865DC /* FavouriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteController.swift; sourceTree = "<group>"; };
+		950AFDCC28E1BF2400C865DC /* FavouritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePodcastCell.swift; sourceTree = "<group>"; };
+		950AFDCE28E314AB00C865DC /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		950AFDD028E4783E00C865DC /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
 		9550055928CE05F7003F0899 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		9550055B28D1AC70003F0899 /* RSSFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
 		9550055D28D1B6DF003F0899 /* PlayerDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetails.xib; sourceTree = "<group>"; };
@@ -93,6 +101,7 @@
 				9550055B28D1AC70003F0899 /* RSSFeed.swift */,
 				95619F7E28D844FE000F1824 /* CMTime.swift */,
 				95619F8228DB8A3B000F1824 /* UIApplication.swift */,
+				950AFDCE28E314AB00C865DC /* UserDefault.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -140,6 +149,8 @@
 				958D871228C5DD3A0034E7B2 /* MainTabBarController.swift */,
 				958D871528C6038A0034E7B2 /* PodcastsSearchController.swift */,
 				95CC5C8928CBAD9F005D5F70 /* EpisodesController.swift */,
+				950AFDCA28E1B86E00C865DC /* FavouriteController.swift */,
+				950AFDD028E4783E00C865DC /* DownloadsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 				9550055D28D1B6DF003F0899 /* PlayerDetails.xib */,
 				9550055F28D1B90A003F0899 /* PlayerDetails.swift */,
 				95619F8028DB8563000F1824 /* PlayerDetails + Gestures.swift */,
+				950AFDCC28E1BF2400C865DC /* FavouritePodcastCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +315,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950AFDCD28E1BF2400C865DC /* FavouritePodcastCell.swift in Sources */,
+				950AFDD128E4783E00C865DC /* DownloadsController.swift in Sources */,
 				95619F8328DB8A3B000F1824 /* UIApplication.swift in Sources */,
 				958D870328C5DD090034E7B2 /* ViewController.swift in Sources */,
 				9550055A28CE05F7003F0899 /* String.swift in Sources */,
@@ -310,6 +324,7 @@
 				95CC5C8A28CBAD9F005D5F70 /* EpisodesController.swift in Sources */,
 				958D871C28C765130034E7B2 /* APIService.swift in Sources */,
 				9550055C28D1AC70003F0899 /* RSSFeed.swift in Sources */,
+				950AFDCF28E314AB00C865DC /* UserDefault.swift in Sources */,
 				95619F7F28D844FE000F1824 /* CMTime.swift in Sources */,
 				958D86FF28C5DD090034E7B2 /* AppDelegate.swift in Sources */,
 				958D871928C6040F0034E7B2 /* Podcast.swift in Sources */,
@@ -317,6 +332,7 @@
 				95CC5C8F28CBC74E005D5F70 /* EpisodeCellTableViewCell.swift in Sources */,
 				958D871328C5DD3A0034E7B2 /* MainTabBarController.swift in Sources */,
 				958D871628C6038A0034E7B2 /* PodcastsSearchController.swift in Sources */,
+				950AFDCB28E1B86F00C865DC /* FavouriteController.swift in Sources */,
 				958D871E28C7663D0034E7B2 /* SearchResults.swift in Sources */,
 				95A81A0028C871DA0048DB1C /* PodcastCell.swift in Sources */,
 				95CC5C8C28CBB28F005D5F70 /* Episode.swift in Sources */,
@@ -396,7 +412,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -450,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

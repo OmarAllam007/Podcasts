@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,11 +47,21 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-fa-lQj">
+                        <rect key="frame" x="32" y="95.5" width="68" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="shadowOffset" width="0.0" height="1"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="7AH-fa-lQj" firstAttribute="centerX" secondItem="Huf-ms-JGH" secondAttribute="centerX" id="1e8-oP-ASH"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LOS-pW-xNt" secondAttribute="trailing" id="9KY-P9-hM1"/>
                     <constraint firstItem="LOS-pW-xNt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Flw-Kb-vmp"/>
                     <constraint firstItem="LOS-pW-xNt" firstAttribute="leading" secondItem="Huf-ms-JGH" secondAttribute="trailing" constant="16" id="Kl2-KO-hJQ"/>
+                    <constraint firstItem="7AH-fa-lQj" firstAttribute="centerY" secondItem="Huf-ms-JGH" secondAttribute="centerY" id="ROo-7z-c9b"/>
                     <constraint firstItem="Huf-ms-JGH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Rpt-Ih-EaH"/>
                     <constraint firstItem="Huf-ms-JGH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="agI-jl-jmb"/>
                 </constraints>
@@ -61,6 +71,7 @@
                 <outlet property="descriptionLabel" destination="DV1-mf-lfC" id="vd0-IE-IqE"/>
                 <outlet property="episodeDateLabel" destination="9s7-1J-OTr" id="3rI-R1-0L6"/>
                 <outlet property="episodeImageView" destination="Huf-ms-JGH" id="aqg-Ek-WDY"/>
+                <outlet property="progressLabel" destination="7AH-fa-lQj" id="UkF-fK-kQg"/>
                 <outlet property="titleLabel" destination="Ziz-7B-cO9" id="qXM-3Z-YwF"/>
             </connections>
             <point key="canvasLocation" x="298.55072463768118" y="170.08928571428569"/>
